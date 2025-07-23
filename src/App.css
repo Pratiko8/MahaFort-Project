@@ -2275,5 +2275,12 @@ footer {
 }
 
 .auth-toggle:hover {
-  text-decoration: underline;
+  text-decoration: underline; 
 }
+
+.auth-error {
+  color: #dc3545;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
