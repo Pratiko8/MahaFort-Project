@@ -1,4 +1,3 @@
-// src/component/AuthForm.jsx
 import React, { useState } from "react";
 import { auth } from "../firbase";
 import {
@@ -21,35 +20,39 @@ const AuthForm = () => {
       } else {
         await createUserWithEmailAndPassword(auth, email, password);
       }
-navigate("/app");
+      navigate("/app");
     } catch (error) {
       alert(error.message);
     }
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h2>{isLogin ? "Login" : "Sign Up"}</h2>
-      <form onSubmit={handleAuth}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        /><br />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        /><br />
-        <button type="submit">{isLogin ? "Login" : "Sign Up"}</button>
-      </form>
-      <p onClick={() => setIsLogin(!isLogin)} style={{ cursor: "pointer" }}>
-        {isLogin ? "Don't have an account? Sign Up" : "Already have an account? Login"}
-      </p>
+    <div className="auth-wrapper">
+      <div className="auth-form-container">
+        <h2>{isLogin ? "Login" : "Sign Up"}</h2>
+        <form onSubmit={handleAuth} className="auth-form">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">{isLogin ? "Login" : "Sign Up"}</button>
+        </form>
+        <p onClick={() => setIsLogin(!isLogin)} className="auth-toggle">
+          {isLogin
+            ? "Don't have an account? Sign Up"
+            : "Already have an account? Login"}
+        </p>
+      </div>
     </div>
   );
 };
